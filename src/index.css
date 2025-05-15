@@ -1,0 +1,74 @@
+/* 3D Space Setup */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden; /* ✅ Only prevent horizontal scroll */
+  height: 100%;
+  perspective: 1000px; /* This creates the 3D effect */
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 200vh; /* Ensure it's tall enough to scroll */
+  transform-style: preserve-3d;
+  transform: rotateX(10deg); /* Tilt the container slightly for 3D effect */
+}
+
+/* Planets styles */
+.planet {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #4a90e2; /* Color for testing */
+  opacity: 0; /* Initially invisible */
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.planet-description {
+  position: absolute;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  opacity: 0;
+  top: 50%; /* Center the description vertically */
+  left: 50%; /* Center the description horizontally */
+  transform: translate(-50%, -50%);
+}
+
+/* Each planet */
+#planet-client {
+  background-color: #4a90e2;
+  top: 10%; /* Arbitrary position for testing */
+  left: 20%;
+}
+
+#planet-api {
+  background-color: #f5a623;
+  top: 30%;
+  left: 40%;
+}
+
+#planet-server {
+  background-color: #7ed321;
+  top: 50%;
+  left: 60%;
+}
+
+#planet-database {
+  background-color: #e94e77;
+  top: 70%;
+  left: 80%;
+}
+
+#planet-overview {
+  background-color: #9013fe;
+  top: 90%;
+  left: 100%;
+}
