@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars, Html } from "@react-three/drei";
-import Planet from "./Planet"; // Your existing Planet component
+import Planet from "./Planet";
 import * as THREE from "three";
 
 const planetsConfig = [
@@ -45,7 +45,7 @@ function AnimatedPlanet({
   const planetRef = useRef();
 
   const targetPosition = new THREE.Vector3();
-  const targetOverallScale = useRef(1); // This will be the scale for the planetRef group
+  const targetOverallScale = useRef(1); 
 
   // Determine display offset from the currently selected planet
   let displayOffset = index - currentPlanetIndex;
@@ -65,14 +65,14 @@ function AnimatedPlanet({
 
   const SELECTED_Z_POSITION = 0;
 
-  const SIDE_X_POSITION = 8; // Increased from 5 to make them more outward
+  const SIDE_X_POSITION = 8; 
   const SIDE_Y_POSITION = 0;
-  const SIDE_Z_POSITION = -1; // Slightly less Z offset, or keep at -2 if preferred
-  const SIDE_PLANET_SCALE = 0.5; // Adjusted scale for side planets
+  const SIDE_Z_POSITION = -1; 
+  const SIDE_PLANET_SCALE = 0.5; 
 
-  const FAR_X_MULTIPLIER = 1.2; // Adjusted for potentially wider spread
-  const FAR_Z_OFFSET = -2; // Adjusted Z offset for far planets
-  const FAR_PLANET_SCALE = 0.25; // Adjusted scale for far planets
+  const FAR_X_MULTIPLIER = 1.2; 
+  const FAR_Z_OFFSET = -2;
+  const FAR_PLANET_SCALE = 0.25;
 
   if (isSelected) {
     targetPosition.set(0, 0, SELECTED_Z_POSITION);
@@ -104,7 +104,7 @@ function AnimatedPlanet({
     targetPosition.set(
       direction * farBaseX,
       SIDE_Y_POSITION,
-      SIDE_Z_POSITION + FAR_Z_OFFSET // Further back than immediate side planets
+      SIDE_Z_POSITION + FAR_Z_OFFSET
     );
     targetOverallScale.current = FAR_PLANET_SCALE;
   }
@@ -133,16 +133,12 @@ function AnimatedPlanet({
     }
   });
 
-  // ... existing code in AnimatedPlanet ...
   return (
     <group ref={groupRef}>
       <group ref={planetRef}>
         <Planet
-          planetData={planetData} // Pass the whole planetData object
+          planetData={planetData}
           position={[0, 0, 0]}
-          // modelPath={planetData.modelPath} // Already part of planetData
-          // color={planetData.color} // Already part of planetData (if it exists)
-          // size={planetData.size} // Already part of planetData
           label={
             (displayOffset === 1 || displayOffset === -1) && totalPlanets > 1
               ? planetData.name
@@ -162,7 +158,7 @@ function App() {
     isDragging: false,
     startX: 0,
     currentX: 0,
-    threshold: 75, // Minimum drag distance in pixels to trigger a swipe
+    threshold: 75, 
   });
 
   const handleNextPlanet = () => {
@@ -181,7 +177,7 @@ function App() {
   const selectedPlanetData = planetsConfig[currentPlanetIndex];
 
   const handlePointerDown = (event) => {
-    if (event.target.tagName === "BUTTON") return; // Ignore clicks on UI buttons
+    if (event.target.tagName === "BUTTON") return;
     dragInfo.current.isDragging = true;
     dragInfo.current.startX = event.clientX;
     dragInfo.current.currentX = event.clientX;
@@ -191,7 +187,6 @@ function App() {
   const handlePointerMove = (event) => {
     if (!dragInfo.current.isDragging) return;
     dragInfo.current.currentX = event.clientX;
-    // Optional: Add visual feedback during drag here (e.g., slightly moving planets)
   };
 
   const handlePointerUp = (event) => {
@@ -214,14 +209,12 @@ function App() {
 
   const handlePointerLeave = (event) => {
     if (dragInfo.current.isDragging) {
-      // If mouse leaves while dragging, treat it as a drag end
       handlePointerUp(event);
     }
   };
 
   return (
     <>
-      {/* Planet Name Display */}
       <div
         style={{
           position: "fixed",
@@ -237,7 +230,6 @@ function App() {
         {selectedPlanetData.name}
       </div>
 
-      {/* Navigation Buttons (Optional: can be removed if drag is primary) */}
       <div
         style={{
           position: "fixed",
@@ -245,7 +237,7 @@ function App() {
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 10,
-          display: "flex", // Keep them for now or remove
+          display: "flex",
           gap: "20px",
         }}
       >
@@ -273,12 +265,12 @@ function App() {
           left: 0,
           zIndex: 1,
           background: "black",
-          cursor: "grab", // Initial cursor style
+          cursor: "grab",
         }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
-        onPointerLeave={handlePointerLeave} // Handle mouse leaving the area while dragging
+        onPointerLeave={handlePointerLeave}
       >
         <Canvas camera={{ position: CAMERA_POSITION, fov: CAMERA_FOV }}>
           <ambientLight intensity={1.5} />
@@ -289,10 +281,9 @@ function App() {
             <AnimatedPlanet
               key={planet.id}
               planetData={planet}
-              // isSelected={index === currentPlanetIndex} // No longer needed, calculated inside
-              index={index} // Pass the planet's own index
-              currentPlanetIndex={currentPlanetIndex} // Pass the currently selected index
-              totalPlanets={planetsConfig.length} // Pass the total number of planets
+              index={index}
+              currentPlanetIndex={currentPlanetIndex}
+              totalPlanets={planetsConfig.length}
             />
           ))}
         </Canvas>

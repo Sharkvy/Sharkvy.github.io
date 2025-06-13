@@ -5,17 +5,17 @@ body {
   font-family: "Arial", sans-serif;
   background: black;
   color: white;
-  overflow-x: hidden; /* ✅ Only prevent horizontal scroll */
+  overflow-x: hidden;
   height: 100%;
-  perspective: 1000px; /* This creates the 3D effect */
+  perspective: 1000px;
 }
 
 .container {
   position: relative;
   width: 100vw;
-  height: 200vh; /* Ensure it's tall enough to scroll */
+  height: 200vh;
   transform-style: preserve-3d;
-  transform: rotateX(10deg); /* Tilt the container slightly for 3D effect */
+  transform: rotateX(10deg);
 }
 
 /* Planets styles */
@@ -24,8 +24,8 @@ body {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background-color: #4a90e2; /* Color for testing */
-  opacity: 0; /* Initially invisible */
+  background-color: #4a90e2;
+  opacity: 0;
   transform-origin: center center;
   will-change: transform;
   transition: transform 1s ease, opacity 1s ease;
@@ -37,15 +37,15 @@ body {
   text-align: center;
   font-size: 1.5rem;
   opacity: 0;
-  top: 50%; /* Center the description vertically */
-  left: 50%; /* Center the description horizontally */
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
 /* Each planet */
 #planet-client {
   background-color: #4a90e2;
-  top: 10%; /* Arbitrary position for testing */
+  top: 10%; 
   left: 20%;
 }
 
