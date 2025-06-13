@@ -10,7 +10,7 @@ const planetsConfig = [
     name: "Client",
     modelPath: "planet_client.glb", 
     size: 0.5,
-    description: "The user interface and experience layer.",
+    description: "The part users interact with directly, it displays data and sends user actions to the server.",
     visualRadius: 0.75,
   },
   {
@@ -18,7 +18,7 @@ const planetsConfig = [
     name: "API",
     modelPath: "planet_api.glb", 
     size: 0.0035,
-    description: "The application programming interface.",
+    description: "The part that handles requests and responses between the client and server.",
     visualRadius: 0.75,
   },
   {
@@ -26,7 +26,7 @@ const planetsConfig = [
     name: "Server",
     modelPath: "planet_server.glb",
     size: 0.11,
-    description: "The backend logic, data storage, and processing.",
+    description: "The part that manages data storage, processing, and business logic.",
     visualRadius: 0.75,
   },
 ];
