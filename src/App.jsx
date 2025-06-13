@@ -8,7 +8,7 @@ const planetsConfig = [
   {
     id: "client",
     name: "Client",
-    modelPath: "/planet_client.glb",
+    modelPath: "planet_client.glb", 
     size: 0.5,
     description: "The user interface and experience layer.",
     visualRadius: 0.75,
@@ -16,7 +16,7 @@ const planetsConfig = [
   {
     id: "api",
     name: "API",
-    modelPath: "/planet_api.glb",
+    modelPath: "planet_api.glb", 
     size: 0.0035,
     description: "The application programming interface.",
     visualRadius: 0.75,
@@ -24,7 +24,7 @@ const planetsConfig = [
   {
     id: "server",
     name: "Server",
-    modelPath: "/planet_server.glb",
+    modelPath: "planet_server.glb",
     size: 0.11,
     description: "The backend logic, data storage, and processing.",
     visualRadius: 0.75,
